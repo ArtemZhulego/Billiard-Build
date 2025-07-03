@@ -6,9 +6,45 @@
     <title>Unity Web Player | Android Billiard Game</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
+    <style>
+    html, body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+    
+    #gameContainer {
+        width: 100vw;
+        height: 100vh;
+        transform: rotate(0deg);
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
+    
+    @media screen and (orientation: portrait) {
+        #warning {
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: black;
+            color: white;
+            text-align: center;
+            padding-top: 50vh;
+            z-index: 9999;
+        }
+    }
+</style>
+
   </head>
   <body>
     <div id="unity-container" class="unity-desktop">
+      <div id="warning">Поверните устройство в горизонтальный режим!</div>
       <canvas id="unity-canvas" width=1920 height=1080 tabindex="-1"></canvas>
       <div id="unity-loading-bar">
         <div id="unity-logo"></div>
@@ -55,9 +91,9 @@
       var loaderUrl = buildUrl + "/Billiard-Build.loader.js";
       var config = {
         arguments: [],
-        dataUrl: buildUrl + "/Billiard-Build.data",
-        frameworkUrl: buildUrl + "/Billiard-Build.framework.js",
-        codeUrl: buildUrl + "/Billiard-Build.wasm",
+        dataUrl: buildUrl + "/Billiard-Build.data.gz",
+        frameworkUrl: buildUrl + "/Billiard-Build.framework.js.gz",
+        codeUrl: buildUrl + "/Billiard-Build.wasm.gz",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "Android Billiard Game",
